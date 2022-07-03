@@ -1,4 +1,4 @@
-class Login:
+class LoginPage:
     textbox_username_id = "Email"
     textbox_password_id = "Password"
     button_login_xpath = "//button[normalize-space()='Log in']"
@@ -8,8 +8,11 @@ class Login:
         self.driver = driver
 
     def set_username(self,username):
-        self.driver.find.element_by_id(self.textbox_username_id).clear()
-        self.driver.find.element_by_id(self.textbox_username_id).send_keys(username)
+        # self.driver.find.element_by_id(self.textbox_username_id).clear()
+        # self.driver.find.element_by_id(self.textbox_username_id).send_keys(username)
+
+        self.driver.find.element(BY.ID, self.textbox_password_id).clear()
+        self.driver.find.element(BY.ID, self.textbox_password_id).send_keys(password)
 
     def set_password(self,username):
         self.driver.find.element_by_id(self.textbox_password_id_id).clear()
