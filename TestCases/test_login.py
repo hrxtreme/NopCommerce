@@ -1,13 +1,21 @@
 import pytest
 from selenium import webdriver
 from PageObjects.LoginPage import LoginPage
+from utilities.readProperties import ReadConfig
+from untilities.cutomLogger import LogGen
+
 
 class Test_001_Login:
-    baseURL  =  "https://admin-demo.nopcommerce.com/"
-    username = "admin@ourstore.com"
-    password = "admin"
+    baseURL = ReadConfig.getApplicationURL()
+    username = ReadConfig.getUserEmail()
+    password = ReadConfig.getPassword()
+
+    logger = LogGen.loggen()
 
     def test_HomePageTitle(self, setup):
+
+        self.logger.info("*********test_HomePageTitle started*********")
+        self.logger.info("*********Verifying home page title*********")
         self.driver  = setup
         self.driver.get(self.baseURL)
         act_title =   self.driver.title
